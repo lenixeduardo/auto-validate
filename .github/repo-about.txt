@@ -1,0 +1,1 @@
+Skill para agentes de IA: nota 0–10, diagnóstico de desvios, correções verificáveis e memória persistente opcional.

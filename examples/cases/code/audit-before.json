@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "project": "demo-code",
+  "request": "Ordenar uma lista de strings monetárias numericamente, do menor ao maior; preservar os textos e duplicatas.",
+  "deliverable": "examples/cases/code/before.py",
+  "scope": "Execução da função sort_prices sobre [\"11.00\", \"2.50\", \"3.00\", \"2.50\"]",
+  "criteria": {
+    "fidelity": 6,
+    "completeness": 6,
+    "accuracy": 3,
+    "constraints": 10,
+    "usability": 5
+  },
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "Ordenar preços por valor numérico ascendente.",
+      "type": "must",
+      "status": "missed",
+      "evidence": "before.py usa sorted(prices), saída começa com 11.00"
+    },
+    {
+      "id": "R2",
+      "text": "Manter strings originais e entradas repetidas.",
+      "type": "must",
+      "status": "met",
+      "evidence": "before.py retorna strings originais e mantém 2.50 duas vezes"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "requirement_id": "R1",
+      "severity": "major",
+      "classification": "observed",
+      "expected": "2.50, 2.50, 3.00, 11.00",
+      "observed": "11.00, 2.50, 2.50, 3.00",
+      "evidence": "before.py: sorted(prices) faz ordenação lexicográfica",
+      "fix": "Converter chave de ordenação para Decimal",
+      "verify": "Executar tests/test_demo_cases.py e validar ordem numérica"
+    }
+  ],
+  "memory_candidates": [
+    {
+      "rule": "Ao ordenar valores monetários em strings, use uma chave numérica decimal e preserve os valores originais.",
+      "reason": "Ordenação lexicográfica coloca 11.00 antes de 2.50.",
+      "scope": "project",
+      "source_finding_id": "F1"
+    }
+  ],
+  "notes": "O erro é comprovado executando o código local, não apenas lendo o prompt."
+}

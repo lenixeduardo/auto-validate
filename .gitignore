@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.auto-validate/
+state/
+*.log
+.DS_Store

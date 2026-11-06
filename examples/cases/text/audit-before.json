@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "project": "demo-text",
+  "request": "Explicar o Auto-Validate sem prometer ausência total de alucinações ou memória automática sem consentimento.",
+  "deliverable": "examples/cases/text/before.md",
+  "scope": "Inspeção do Markdown local para afirmações absolutas e política de persistência",
+  "criteria": {
+    "fidelity": 3,
+    "completeness": 6,
+    "accuracy": 2,
+    "constraints": 1,
+    "usability": 6
+  },
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "Não afirmar que elimina 100% das alucinações.",
+      "type": "must_not",
+      "status": "violated",
+      "evidence": "before.md: elimina 100% das alucinações"
+    },
+    {
+      "id": "R2",
+      "text": "Informar que memória persistente exige consentimento explícito.",
+      "type": "must",
+      "status": "missed",
+      "evidence": "before.md: grava automaticamente toda conversa"
+    },
+    {
+      "id": "R3",
+      "text": "Explicar que compara o pedido e propõe correções.",
+      "type": "must",
+      "status": "met",
+      "evidence": "before.md: compara o pedido com o resultado e propõe correções"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "requirement_id": "R1",
+      "severity": "critical",
+      "classification": "observed",
+      "expected": "Evitar promessa absoluta",
+      "observed": "Promete eliminação de 100% das alucinações",
+      "evidence": "before.md: expressão literal 100%",
+      "fix": "Trocar garantia por benefício condicional verificável",
+      "verify": "Buscar afirmações absolutas no texto final"
+    },
+    {
+      "id": "F2",
+      "requirement_id": "R2",
+      "severity": "major",
+      "classification": "observed",
+      "expected": "Memória persistente requer autorização",
+      "observed": "Afirma armazenamento automático de toda conversa",
+      "evidence": "before.md: grava automaticamente",
+      "fix": "Especificar opt-in e armazenamento real",
+      "verify": "Testar presença de consentimento explícito"
+    }
+  ],
+  "memory_candidates": [
+    {
+      "rule": "Evite garantias absolutas de precisão e descreva limitações verificáveis.",
+      "reason": "O texto prometeu eliminar 100% das alucinações.",
+      "scope": "project",
+      "source_finding_id": "F1"
+    }
+  ],
+  "notes": "Este caso demonstra revisão editorial de afirmações verificáveis; não é uma medição de taxa de alucinação."
+}

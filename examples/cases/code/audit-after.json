@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "project": "demo-code",
+  "request": "Ordenar uma lista de strings monetárias numericamente, do menor ao maior; preservar os textos e duplicatas.",
+  "deliverable": "examples/cases/code/after.py",
+  "scope": "Execução da função sort_prices corrigida com Decimal",
+  "criteria": {
+    "fidelity": 10,
+    "completeness": 10,
+    "accuracy": 10,
+    "constraints": 10,
+    "usability": 10
+  },
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "Ordenar preços por valor numérico ascendente.",
+      "type": "must",
+      "status": "met",
+      "evidence": "after.py ordena com key=lambda price: Decimal(price); teste de regressão passou"
+    },
+    {
+      "id": "R2",
+      "text": "Manter strings originais e entradas repetidas.",
+      "type": "must",
+      "status": "met",
+      "evidence": "after.py mantém 2.50 em duas posições"
+    }
+  ],
+  "findings": [],
+  "memory_candidates": [],
+  "notes": "Correção executada localmente e testada; não avalia entrada inválida (fora do escopo)."
+}

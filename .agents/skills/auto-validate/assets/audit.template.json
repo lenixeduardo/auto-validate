@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "project": "exemplo-ui",
+  "request": "Criar interface white mode preservando componentes e espacamentos da referencia.",
+  "deliverable": "Entrega UI v1, src/pages/Home.tsx",
+  "scope": "Inspecionado src/pages/Home.tsx e comparado visualmente com referencia fornecida.",
+  "criteria": {
+    "fidelity": 5,
+    "completeness": 6,
+    "accuracy": 8,
+    "constraints": 3,
+    "usability": 7
+  },
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "Preservar a estrutura de componentes da referencia.",
+      "type": "must",
+      "status": "violated",
+      "evidence": "Uma seção extra foi adicionada no meio da homepage.",
+      "location": "src/pages/Home.tsx:42"
+    },
+    {
+      "id": "R2",
+      "text": "Usar white mode.",
+      "type": "must",
+      "status": "met",
+      "evidence": "Fundo claro, texto escuro e sem inversao global de tema.",
+      "location": "src/pages/Home.tsx:10"
+    },
+    {
+      "id": "R3",
+      "text": "Preservar espacamentos originais.",
+      "type": "should",
+      "status": "partial",
+      "evidence": "Espacamento do hero alterado em comparacao com a referencia.",
+      "location": "src/pages/Home.tsx:19"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "requirement_id": "R1",
+      "severity": "major",
+      "classification": "observed",
+      "expected": "Mesmas secoes e ordem visual da referencia.",
+      "observed": "Secao extra alterou a estrutura sem solicitacao.",
+      "evidence": "src/pages/Home.tsx:42",
+      "fix": "Remover apenas a secao extra; preservar componentes aprovados.",
+      "verify": "Comparar a ordem das secoes com a referencia e executar build.",
+      "possible_cause": "Interpretacao indevida de liberdade criativa."
+    },
+    {
+      "id": "F2",
+      "requirement_id": "R3",
+      "severity": "minor",
+      "classification": "observed",
+      "expected": "Espacamentos proximos aos da referencia.",
+      "observed": "Hero mais alto que a referencia.",
+      "evidence": "Comparacao do hero e src/pages/Home.tsx:19",
+      "fix": "Restaurar espacos do hero sem refazer outros blocos.",
+      "verify": "Comparar em viewport identica e tirar nova captura."
+    }
+  ],
+  "memory_candidates": [
+    {
+      "rule": "Em ajustes de UI, preserve as secoes e a ordem original salvo pedido explicito de mudanca.",
+      "scope": "project",
+      "source_finding_id": "F1",
+      "reason": "Secao extra foi adicionada sem autorizacao."
+    }
+  ],
+  "notes": "Avaliação de exemplo; as evidências são ilustrativas, não resultados de um repositório real."
+}

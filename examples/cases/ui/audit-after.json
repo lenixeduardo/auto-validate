@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "project": "demo-ui",
+  "request": "Criar uma página clara contendo somente as seções hero e features, preservando CTA e seu link. Não adicionar seções extras.",
+  "deliverable": "examples/cases/ui/after.html",
+  "scope": "Arquivo HTML local versionado; testes checam tema, IDs e CTA",
+  "criteria": {
+    "fidelity": 10,
+    "completeness": 10,
+    "accuracy": 10,
+    "constraints": 10,
+    "usability": 10
+  },
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "Usar tema claro (white mode).",
+      "type": "must",
+      "status": "met",
+      "evidence": "after.html: background #ffffff e color #182134"
+    },
+    {
+      "id": "R2",
+      "text": "Não adicionar seções além de hero e features.",
+      "type": "must_not",
+      "status": "met",
+      "evidence": "after.html: sections hero e features; tests/test_demo_cases.py"
+    },
+    {
+      "id": "R3",
+      "text": "Preservar CTA Explorar produtos apontando para /produtos.",
+      "type": "must",
+      "status": "met",
+      "evidence": "after.html: a.cta href=/produtos"
+    }
+  ],
+  "findings": [],
+  "memory_candidates": [],
+  "notes": "Após alteração real do HTML; resultado verificado por teste automatizado."
+}

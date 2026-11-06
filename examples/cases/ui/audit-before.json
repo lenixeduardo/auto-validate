@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "project": "demo-ui",
+  "request": "Criar uma página clara contendo somente as seções hero e features, preservando CTA e seu link. Não adicionar seções extras.",
+  "deliverable": "examples/cases/ui/before.html",
+  "scope": "Arquivo HTML local versionado; inspecionar CSS e IDs das seções, com assertions em tests/test_demo_cases.py",
+  "criteria": {
+    "fidelity": 4,
+    "completeness": 6,
+    "accuracy": 7,
+    "constraints": 2,
+    "usability": 7
+  },
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "Usar tema claro (white mode).",
+      "type": "must",
+      "status": "missed",
+      "evidence": "examples/cases/ui/before.html: body background #101521, color #ffffff"
+    },
+    {
+      "id": "R2",
+      "text": "Não adicionar seções além de hero e features.",
+      "type": "must_not",
+      "status": "violated",
+      "evidence": "examples/cases/ui/before.html: section id=testimonials"
+    },
+    {
+      "id": "R3",
+      "text": "Preservar CTA Explorar produtos apontando para /produtos.",
+      "type": "must",
+      "status": "met",
+      "evidence": "examples/cases/ui/before.html: a.cta href=/produtos"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "requirement_id": "R1",
+      "severity": "major",
+      "classification": "observed",
+      "expected": "Body com fundo branco e texto escuro",
+      "observed": "Fundo quase preto e texto branco",
+      "evidence": "before.html: style body",
+      "fix": "Mudar apenas as cores globais para white mode",
+      "verify": "Conferir CSS de body e executar teste de regressão"
+    },
+    {
+      "id": "F2",
+      "requirement_id": "R2",
+      "severity": "major",
+      "classification": "observed",
+      "expected": "Exatamente hero e features",
+      "observed": "Seção testimonials foi adicionada",
+      "evidence": "before.html: section id=testimonials",
+      "fix": "Remover seção não autorizada",
+      "verify": "Verificar IDs de section via HTMLParser"
+    }
+  ],
+  "memory_candidates": [
+    {
+      "rule": "Em UI baseada em referência, não acrescente seções além das solicitadas.",
+      "reason": "Uma seção extra alterou a estrutura combinada.",
+      "scope": "project",
+      "source_finding_id": "F2"
+    }
+  ],
+  "notes": "Demonstração reproduzível: fixture local, não uma inspeção de interface externa."
+}

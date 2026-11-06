@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "project": "demo-text",
+  "request": "Explicar o Auto-Validate sem prometer ausência total de alucinações ou memória automática sem consentimento.",
+  "deliverable": "examples/cases/text/after.md",
+  "scope": "Inspeção de Markdown corrigido e assertions de afirmações proibidas",
+  "criteria": {
+    "fidelity": 10,
+    "completeness": 10,
+    "accuracy": 10,
+    "constraints": 10,
+    "usability": 10
+  },
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "Não afirmar que elimina 100% das alucinações.",
+      "type": "must_not",
+      "status": "met",
+      "evidence": "after.md: informa que não garante eliminar alucinações"
+    },
+    {
+      "id": "R2",
+      "text": "Informar que memória persistente exige consentimento explícito.",
+      "type": "must",
+      "status": "met",
+      "evidence": "after.md: autorização explícita e armazenamento real"
+    },
+    {
+      "id": "R3",
+      "text": "Explicar que compara o pedido e propõe correções.",
+      "type": "must",
+      "status": "met",
+      "evidence": "after.md: compara requisitos e entregas e propõe correções"
+    }
+  ],
+  "findings": [],
+  "memory_candidates": [],
+  "notes": "Correção editorial versionada. Escopo limitado ao texto demonstrativo."
+}

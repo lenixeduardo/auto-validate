@@ -1,0 +1,25 @@
+name: Auto-Validate CI
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Validate illustrative audit
+        run: python .agents/skills/auto-validate/scripts/auto_validate.py check --input examples/ui-audit.json --output /tmp/auto-validate-report.md
+      - name: Reproduce use cases
+        run: |
+          python examples/run_demos.py
+          python examples/demo_memory.py
+          git diff --exit-code -- examples/results
+      - name: Verify skill manifest
+        run: |
+          test -f .agents/skills/auto-validate/SKILL.md
+          grep -q '^name: auto-validate$' .agents/skills/auto-validate/SKILL.md
